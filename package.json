@@ -1,0 +1,40 @@
+{
+  "name": "bienesraices-220100",
+  "version": "1.0.0",
+  "description": "Este proyecto será desarrollado con Node, Express, Sequelize, pug, Tailwind, Leafle, consist irá en realizar un sistemaweb que permita la publicación de propiedad para su compra venta",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start-permanente": "nodemon src/index.js",
+    "server": "nodemon src/server.js",
+    "css-compiler":"npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nefta11/BienesRaices-220100.git"
+  },
+  "keywords": [
+    "AWOS",
+    "API",
+    "REST",
+    "MYSQL",
+    "BIENES",
+    "RAICES",
+    "TAILWIND"
+  ],
+  "author": "Neftali Arturo Hernández Vergara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nefta11/BienesRaices-220100/issues"
+  },
+  "homepage": "https://github.com/Nefta11/BienesRaices-220100#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.3"
+  }
+}
