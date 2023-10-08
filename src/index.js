@@ -1,4 +1,4 @@
-console.log("Holaa Mundo, ....Hoy es 7 de octubre")
+console.log("Holaa Mundo, ....Hoy es 7 de octubre...")
 
 
 /*Practicas de hoy descargar la libreria de tailwindcsss
