@@ -5,6 +5,7 @@ const router = express.Router();
 //router.get('/',(request,response)=> response.send("Hola web desde GET")) // descomentar para revisar practica de verbos htttp
 router.get('/', (request, response) => response.render("layout/index.pug", {page: "Home"})); 
 
+
 router.get('/quienEres',(request,response)=> response.send("Soy tu primera App web en arquitectura Soa (service object oriented)."))
 
 router.get('/queUsas',(request,response)=> response.send("Estoy construida en el lenguaje de programacion JavaScrip, y utilizo el microservidor de Express."))
