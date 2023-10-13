@@ -39,3 +39,6 @@ DEP*/
 @tailwind components;
 @tailwind utilities;
  */
+
+
+/*ANOTACIONES DEL DIA DE HOY */

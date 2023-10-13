@@ -3,6 +3,7 @@
 
 const formLogin = (request,response) => {
     response.render("auth/login.pug",{
+        page:"Login",
     isLogged : false})}
 
 const formRegister = (request,response) => {
