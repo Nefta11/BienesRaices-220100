@@ -580,13 +580,13 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
+.bg-Fondo {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 202 234 / var(--tw-bg-opacity));
+}
 .bg-Morado {
   --tw-bg-opacity: 1;
   background-color: rgb(61 23 115 / var(--tw-bg-opacity));
-}
-.bg-Rojo {
-  --tw-bg-opacity: 1;
-  background-color: rgb(242 22 81 / var(--tw-bg-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -688,6 +688,10 @@ video {
 .hover\:bg-Rojo:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 22 81 / var(--tw-bg-opacity));
+}
+.hover\:bg-Otros:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 5 159 / var(--tw-bg-opacity));
 }
 .hover\:underline:hover {
   text-decoration-line: underline;
