@@ -5,6 +5,7 @@
 import express from "express";  //ECMS6
 import generalRoutes from './routes/generalRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import db from './config/bd.js'
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
@@ -13,6 +14,15 @@ const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y 
 //Agregar y configurar el TemplateEngine 
 app.set('view engine','pug')
 app.set('views','./src/views')
+
+try{
+    db.authenticate();
+    console.log("La conexión a labase de datos a sido exitosa")
+}catch(error){
+    console.log("Hubo un error al intentar conectarme a la db.")
+    console.log(error)
+}
+
 
 app.use(express.static('./src/public'))
 //mvc -model view contoller //
