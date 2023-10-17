@@ -18,4 +18,9 @@ const formPasswordRecovery = (request,response) => {
         page:"Password Recovery"
     })}    
 
-export { formLogin, formRegister, formPasswordRecovery};
+
+const insertUser= (request,response) =>{
+    console.log("Intentando registrar los datos del usuario en la Base de Datos")
+}
+
+export { formLogin, formRegister, formPasswordRecovery, insertUser };
