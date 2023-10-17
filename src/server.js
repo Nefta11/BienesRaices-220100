@@ -6,6 +6,7 @@ import express from "express";  //ECMS6
 import generalRoutes from './routes/generalRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import db from './config/bd.js'
+import User from './models/User..js'
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
@@ -18,6 +19,8 @@ app.set('views','./src/views')
 try{
     db.authenticate();
     console.log("La conexión a labase de datos a sido exitosa")
+    db.sync()
+    console.log("Se han sincronizado las tablas existentes en la bvase de datos")
 }catch(error){
     console.log("Hubo un error al intentar conectarme a la db.")
     console.log(error)
