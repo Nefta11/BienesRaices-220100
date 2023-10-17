@@ -658,6 +658,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(242 5 159 / var(--tw-text-opacity));
 }
+.text-Rojo {
+  --tw-text-opacity: 1;
+  color: rgb(242 22 81 / var(--tw-text-opacity));
+}
 .text-Textos {
   --tw-text-opacity: 1;
   color: rgb(21 14 64 / var(--tw-text-opacity));
@@ -688,10 +692,6 @@ video {
 .hover\:bg-Rojo:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 22 81 / var(--tw-bg-opacity));
-}
-.hover\:bg-Otros:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(242 5 159 / var(--tw-bg-opacity));
 }
 .hover\:underline:hover {
   text-decoration-line: underline;
