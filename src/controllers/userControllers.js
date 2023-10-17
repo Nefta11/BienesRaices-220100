@@ -1,5 +1,5 @@
 
-
+import User from "../models/User..js"
 
 const formLogin = (request,response) => {
     response.render("auth/login.pug",{
@@ -19,10 +19,12 @@ const formPasswordRecovery = (request,response) => {
     })}    
 
 
-const insertUser= (request,response) =>{
+const insertUser= async (request,response) =>{
     //response.redirect('/login')
     console.log("Intentando registrar los datos del usuario en la Base de Datos")
     console.log(`Nombre: ${request.body.name}`)
+    console.log(`password: ${request.body.password}`)
+    let nemUser= await User.create(request.body)
 }
 
 export { formLogin, formRegister, formPasswordRecovery, insertUser };
