@@ -29,6 +29,12 @@ try{
 
 app.use(express.static('./src/public'))
 //mvc -model view contoller //
+
+//Hbilitando el acceso a las propiedades del DOM
+app.use(express.urlencoded({extended: false
+}))
+
+
 app.listen(port,(request,response ) => //Le indicamos a la instancia express que comience a escuchar peticiones
 
 {
