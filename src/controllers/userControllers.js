@@ -22,7 +22,7 @@ const formPasswordRecovery = (request,response) => {
 const insertUser= (request,response) =>{
     //response.redirect('/login')
     console.log("Intentando registrar los datos del usuario en la Base de Datos")
-    console.log(``)
+    console.log(`Nombre: ${request.body.name}`)
 }
 
 export { formLogin, formRegister, formPasswordRecovery, insertUser };
