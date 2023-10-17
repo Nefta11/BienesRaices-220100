@@ -20,6 +20,7 @@ const formPasswordRecovery = (request,response) => {
 
 
 const insertUser= (request,response) =>{
+    response.redirect('/login')
     console.log("Intentando registrar los datos del usuario en la Base de Datos")
 }
 
