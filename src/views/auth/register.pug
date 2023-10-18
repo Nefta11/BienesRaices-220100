@@ -11,19 +11,19 @@ block register
                 form.space-y-5(action="/login/register" method="POST")
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Name:
-                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Full Name" name="name")
+                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Full Name" name="name" required)
                     
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Email:
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="user@domain.com" name="email" type="email")
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="user@domain.com" name="email" type="email"  required)
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Password:
-                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="******" name="password" type="password")
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="******" name="password" type="password"  required)
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Confirm Password:
-                        input#password2.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="******" name="password2" type="password")
+                        input#password2.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="******" name="password2" type="password"  required)
                     div.flex.items-center.justify-between.pt-5
                         a.text-sm.text-gray-400(href="/login/password-recovery" class="hover:underline decoration-4 decoration-red-600") Forgot you password?
                         a.text-sm.text-gray-400(href="/login" class="hover:underline decoration-4 decoration-red-600") Do you?, Login
                     div 
-                        input#button_login.w-full.bg.-Morado.text-white.font-bold.py-3.rounded.xl(class="bg-Morado hover:bg-Rojo cursor-pointer" type="submit" value="Create Account")
+                        input#button_login.w-full.bg.-Morado.text-white.font-bold.py-3.rounded.xl(class="bg-Morado hover:bg-Rojo cursor-pointer" type="submit" value="Create Account"  required)
