@@ -1,5 +1,7 @@
 
+import { check } from "express-validator"
 import User from "../models/User..js"
+import { check, validationResult } from "express-validator"
 
 const formLogin = (request,response) => {
     response.render("auth/login.pug",{
@@ -24,7 +26,9 @@ const insertUser= async (request,response) =>{
     console.log("Intentando registrar los datos del usuario en la Base de Datos")
     console.log(`Nombre: ${request.body.name}`)
     console.log(`password: ${request.body.password}`)
+    await check ("name").notEmty.run()
     let nemUser= await User.create(request.body)
+
 }
 
 export { formLogin, formRegister, formPasswordRecovery, insertUser };
