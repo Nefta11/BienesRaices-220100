@@ -28,7 +28,7 @@ const insertUser= async (request,response) =>{
     await check("email").notEmpty().withMessage("This fieldis required").isEmail().withMessage("This is not emailformat").run(request)
     await check("password").notEmpty().withMessage("This fieldis required").isLength({min:8}).withMessage("The password must have 8 characterat lest ").run(request)
     await check("password2").notEmpty().withMessage("This fieldis required").isLength({min:8}).withMessage("The password most have 8characters at least").equals(request.body.password).withMessage("Bothpasswords felds must be the same").run(request)
-    response.json(validationResult(request))
+    //response.json(validationResult(request))
     console.log(`Se encontraron: ${validationResult.length} errores de validación`)
     
     let resultadoValidacion=validationResult(request)
@@ -36,7 +36,7 @@ const insertUser= async (request,response) =>{
 
     let nemUser= await User.create(request.body)}
     else{
-        response.render("login/register",{
+        response.render("auth/register.pug",{
             page:"Creating a new account...",
             errors:resultadoValidacion.array()
         })
