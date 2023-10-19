@@ -38,7 +38,7 @@ const insertUser = async (request, response) => {
     let resultadoValidacion = validationResult(request)
     const userExists = await User.findOne({ where : {email: request.body.email}})
     console.log(userExists)
-    if (resultadoValidacion.isEmpty()) {
+    if (resultadoValidacion.isEmpty() && userExists!==null) {
 
         let nemUser = await User.create(request.body)
         response.send("New user created...");
