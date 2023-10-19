@@ -36,9 +36,9 @@ const insertUser = async (request, response) => {
     console.log(`Se encontraron: ${validationResult.length} errores de validación`)
 
     let resultadoValidacion = validationResult(request)
+    const userExists = await User.findOne({ where : {email: request.body.email}})
+    console.log(userExists)
     if (resultadoValidacion.isEmpty()) {
-        const userExists = User.findOne()
-
 
         let nemUser = await User.create(request.body)
         response.json({ sucess: true, message: "User registered successfully" });
