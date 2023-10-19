@@ -35,10 +35,23 @@ const insertUser = async (request, response) => {
     //response.json(validationResult(request))
     console.log(`Se encontraron: ${validationResult.length} errores de validación`)
 
+    
     let resultadoValidacion = validationResult(request)
-    const userExists = await User.findOne({ where : {email: request.body.email}})
+    const userExists = await User.findOne({ where: { email: request.body.email } })
     console.log(userExists)
-    if (resultadoValidacion.isEmpty() && userExists!==null) {
+
+    if (userExists) {
+        response.render("auth/register.pug", {
+            page: "Creating a new account...",
+            errors: [{ msg: `El usuario con: ${request.body.email} already exist` }],
+            user: {
+                name: request.body.name,
+                email: request.body.email
+            }
+        })
+    }
+
+    if (resultadoValidacion.isEmpty()) {
 
         let nemUser = await User.create(request.body)
         response.send("New user created...");
@@ -46,10 +59,10 @@ const insertUser = async (request, response) => {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
             errors: resultadoValidacion.array(),
-            user:{
-                 name: request.body.name,
-                 email: request.body.email
-        }
+            user: {
+                name: request.body.name,
+                email: request.body.email
+            }
         })
     }
 
