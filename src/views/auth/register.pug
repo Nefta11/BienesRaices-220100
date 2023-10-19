@@ -13,14 +13,14 @@ block register
         
         .mt-8.mx-auto.max-w-xl 
             .bg-white.py-8.px-4.shadow-xl.rounded-lg
-                form.space-y-5(action="/login/register" method="POST" novalidate)
+                form.space-y-5(action="register" method="POST" novalidate)
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="name") Name:
-                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Full Name" name="name" required)
+                        input#name.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="Full Name" name="name" value=user.name ? user.name : '')
                     
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="email") Email:
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="user@domain.com" name="email" type="email"  required)
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="user@domain.com" name="email" type="email"  value=user.email ? user.email:'')
                     div 
                         label.block.text-sm.uppercase.text-gray-700.mb-3.font-bold(for="password") Password:
                         input#password.w-full.px-3.py-2.border.border-gray-300.rounded-sm.place-holder-gray-400(placeholder="******" name="password" type="password"  required)
