@@ -41,7 +41,7 @@ const insertUser = async (request, response) => {
     if (resultadoValidacion.isEmpty()) {
 
         let nemUser = await User.create(request.body)
-        response.json({ sucess: true, message: "User registered successfully" });
+        response.send("New user created...");
     } else {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
