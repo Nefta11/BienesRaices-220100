@@ -37,6 +37,8 @@ const insertUser = async (request, response) => {
 
     let resultadoValidacion = validationResult(request)
     if (resultadoValidacion.isEmpty()) {
+        const userExists = User.findOne()
+
 
         let nemUser = await User.create(request.body)
         response.json({ sucess: true, message: "User registered successfully" });
