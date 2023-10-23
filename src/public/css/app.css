@@ -547,9 +547,6 @@ video {
 .w-full {
   width: 100%;
 }
-.max-w-md {
-  max-width: 28rem;
-}
 .max-w-xl {
   max-width: 36rem;
 }
@@ -576,12 +573,41 @@ video {
 .rounded-sm {
   border-radius: 0.125rem;
 }
+.rounded-b {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
 .border {
   border-width: 1px;
+}
+.border-t-0 {
+  border-top-width: 0px;
+}
+.border-t-2 {
+  border-top-width: 2px;
+}
+.border-t-4 {
+  border-top-width: 4px;
+}
+.border-Rojo {
+  --tw-border-opacity: 1;
+  border-color: rgb(242 22 81 / var(--tw-border-opacity));
 }
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.border-red-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(248 113 113 / var(--tw-border-opacity));
+}
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 .bg-Fondo {
   --tw-bg-opacity: 1;
@@ -591,6 +617,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(61 23 115 / var(--tw-bg-opacity));
 }
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
@@ -598,6 +628,18 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-Rojo {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 22 81 / var(--tw-bg-opacity));
+}
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .p-2 {
   padding: 0.5rem;
@@ -629,6 +671,10 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .pt-5 {
   padding-top: 1.25rem;
@@ -672,6 +718,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(242 22 81 / var(--tw-text-opacity));
 }
+.text-Textos {
+  --tw-text-opacity: 1;
+  color: rgb(21 14 64 / var(--tw-text-opacity));
+}
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -683,6 +733,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 .decoration-red-600 {
   text-decoration-color: #dc2626;
