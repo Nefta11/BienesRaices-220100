@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize"
 import db from '../config/bd.js'
+import bycrypt from 'bcrypt'
 
 
 const User = db.define('tbb_users', {
@@ -28,7 +29,10 @@ const User = db.define('tbb_users', {
     },  
 
 },{
-    hooks:{}
+    hooks:{beforeCreate:async(user)=>{
+        const salt= await bycrypt.ge
+
+    }}
 })
 
 export default User;
