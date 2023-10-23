@@ -27,6 +27,8 @@ const User = db.define('tbb_users', {
         default: false
     },  
 
+},{
+    hooks:{}
 })
 
 export default User;
