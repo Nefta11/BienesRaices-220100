@@ -5,6 +5,7 @@ const db = new Sequelize ("rs-220100","Neftali","1234567",{
 host:"localhost",
 port:"3307",
 dialect:"mysql",
+timezone:"America/Mexico_City",
 define:{
     timestamps:true
 },
