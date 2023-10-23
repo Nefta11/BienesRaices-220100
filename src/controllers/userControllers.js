@@ -1,5 +1,6 @@
 import User from "../models/User..js"
 import { check, validationResult } from 'express-validator'
+import { generateToken } from "../lib/tokens.js"
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {
