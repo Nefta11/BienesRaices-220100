@@ -20,12 +20,12 @@ const User = db.define('tbb_users', {
     },
     token: {
         type: DataTypes.STRING,
-        default: ""
+        defaultValue: ""
     },
 
     verified: {
         type: DataTypes.BOOLEAN,
-        default: false
+        defaultValue: false
     },  
 
 },{
