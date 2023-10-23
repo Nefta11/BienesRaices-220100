@@ -39,7 +39,10 @@ const insertUser = async (request, response) => {
 
     let resultadoValidacion = validationResult(request)
     const userExists = await User.findOne({ where: { email: request.body.email } })
+
     console.log(userExists)
+
+    const {name,email,password} =request.body
 
     if (userExists) {
         response.render("auth/register.pug", {
@@ -53,8 +56,11 @@ const insertUser = async (request, response) => {
     }
 
     else if (resultadoValidacion.isEmpty()) {
-
-        let nemUser = await User.create(request.body)
+        const token=generateToken()
+        let newUser = await User.create({
+            name,email,password,token
+        })
+        
         response.send("New user created...");
     } else {
         response.render("auth/register.pug", {
