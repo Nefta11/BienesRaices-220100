@@ -1,6 +1,7 @@
 import User from "../models/User..js"
 import { check, validationResult } from 'express-validator'
 import { generateToken } from "../lib/tokens.js"
+import { emailRegister } from "../lib/emails.js"
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {
@@ -60,6 +61,8 @@ const insertUser = async (request, response) => {
         let newUser = await User.create({
             name,email,password,token
         })
+
+        emailRegister({email,name,token})
         
         response.render("templates/message.pug", {
             page: "New Account Created",
