@@ -89,7 +89,9 @@ const confirmAccount = async (req,res) =>{
     const userOwner= await User.findOne({where:{token:tokenRecived}})
     if (!userOwner)
         console.log("El token es invalido....")
+    else
+        console.log("El token existe")
     //TODO actualizar el estado de la verificacion en tabla usuarios 
     //TODO axtualizar a vacio el token de activación
 }
-export { formLogin, formRegister, formPasswordRecovery, insertUser };
+export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount };
