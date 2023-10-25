@@ -23,8 +23,11 @@ const emailRegister = async ()=>{
         text: 'Welcome to Real State-220100, to continue is mandatory that you click on link below to activate your account.',
         html:`<p>Hello, ${name}</p>
         <p>Thank you for chosing to search, sell and buy properties, if you want to continue use your plataform please click link below</p>
-        <a href="#"></a>
-     `
+        <a href="#">Click here to activate your account</a>
+        <p>Best regards</p>
+        <p>Neftali Arturo Hernandez Vergara</p>
+        <P>CEO OF RealState-220100</P>
+        <p>*If you did not created this account please ignore this message </p>`
       })
 }
 
