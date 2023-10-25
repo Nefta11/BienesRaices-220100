@@ -1,9 +1,10 @@
 import dotenv from 'dotenv'
-
+import nodemailer from 'nodemailer'
 dotenv.config({path:'src/.env'})
-const emailRegister = async ()=>{
 
-    console.log(`Intentando enviar el correo electronico de activacion cuenta al usuario ${user.Data.email}`)
+const emailRegister = async (userData)=>{
+
+    console.log(`Intentando enviar el correo electronico de activacion cuenta al usuario ${userData.email}`)
 
     var transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,

@@ -2,6 +2,7 @@ import User from "../models/User..js"
 import { check, validationResult } from 'express-validator'
 import { generateToken } from "../lib/tokens.js"
 import { emailRegister } from "../lib/emails.js"
+import { request, response } from "express"
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {
@@ -81,5 +82,7 @@ const insertUser = async (request, response) => {
     }
 
 }
-
+const confirmAccount =(request,response) =>{
+    //Verificar 
+}
 export { formLogin, formRegister, formPasswordRecovery, insertUser };
