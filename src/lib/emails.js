@@ -10,8 +10,8 @@ const emailRegister = async (userData)=>{
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
         auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.PASSWORD_PASSWORD
+          user: process.env.EMAI_USER,
+          pass: process.env.EMAIL_PASSWORD
         }
       });
 

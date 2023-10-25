@@ -93,5 +93,6 @@ const confirmAccount = async (req,res) =>{
         console.log("El token existe")
     //TODO actualizar el estado de la verificacion en tabla usuarios 
     //TODO axtualizar a vacio el token de activación
+    //TODO PINTAR LA PAGINA DE ERROR 
 }
 export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount };
