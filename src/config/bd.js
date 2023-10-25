@@ -1,9 +1,9 @@
 import Sequelize from "sequelize";
 
 
-const db = new Sequelize ("rs-220100","Neftali","1234567",{
-host:"localhost",
-port:"3307",
+const db = new Sequelize (process.env.DB_NAME,process.env.DB_USER,process.env.DB_PASSWORD,{
+host:process.env.DB_HOST,
+port:process.env.DB_PORT,
 dialect:"mysql",
 timezone:"America/Mexico_City",
 define:{

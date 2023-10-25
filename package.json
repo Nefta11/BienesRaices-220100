@@ -31,6 +31,7 @@
   "homepage": "https://github.com/Nefta11/BienesRaices-220100#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
     "express-validator": "^7.0.1",
     "mysql2": "^3.6.2",
     "pug": "^3.0.2",

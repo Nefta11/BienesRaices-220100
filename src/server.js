@@ -7,6 +7,8 @@ import generalRoutes from './routes/generalRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import db from './config/bd.js'
 import User from './models/User..js'
+import dotenv from 'dotenv'
+dotenv.config({path:'src/.env'})
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
