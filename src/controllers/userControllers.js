@@ -3,6 +3,7 @@ import { check, validationResult } from 'express-validator'
 import { generateToken } from "../lib/tokens.js"
 import { emailRegister } from "../lib/emails.js"
 import { request, response } from "express"
+import nodemon from "nodemon"
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {
@@ -82,7 +83,13 @@ const insertUser = async (request, response) => {
     }
 
 }
-const confirmAccount =(request,response) =>{
-    //Verificar 
+const confirmAccount = async (req,res) =>{
+    //TODO Verificar token
+    const tokenRecived= request.params.token
+    const userOwner= await User.findOne({where:{token:tokenRecived}})
+    if (!userOwner)
+        console.log("El token es invalido....")
+    //TODO actualizar el estado de la verificacion en tabla usuarios 
+    //TODO axtualizar a vacio el token de activación
 }
 export { formLogin, formRegister, formPasswordRecovery, insertUser };
