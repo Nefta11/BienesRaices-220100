@@ -61,10 +61,11 @@ const insertUser = async (request, response) => {
             name,email,password,token
         })
         
-        response.render("templates/message.pug",{
-            page:"New Account Created ",
-            message:`We have sent an email to: ${email}, please verify your acount `
-        })
+        response.render("templates/message.pug", {
+            page: "New Account Created",
+            email: email
+        });
+        
     } else {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
