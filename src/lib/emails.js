@@ -22,14 +22,19 @@ const emailRegister = async (userData)=>{
         to: email,
         subject: 'RealState-220100: Verify your account',
         text: 'Welcome to Real State-220100, to continue is mandatory that you click on link below to activate your account.',
-        html:`<p>Hello, ${name}</p>
-        <p>Thank you for chosing to search, sell and buy properties, if you want to continue use your plataform please click link below</p>
-        <a href="#">Click here to activate your account</a>
-        <p>Best regards</p>
-        <p>Neftali Arturo Hernandez Vergara</p>
-        <P>CEO OF RealState-220100</P>
-        <p>*If you did not created this account please ignore this message </p>`
-      })
+        html: `
+            <div style="background-color: #FBCAEA; padding: 20px;">
+                <p style="color: #3D1773; font-size: 24px;">Hello, ${name}</p>
+                <p style="color: #150E40;">Thank you for choosing to search, sell, and buy properties. If you want to continue using our platform, please click the link below:</p>
+                <a href="#" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
+                <p style="color: #150E40;">Best regards</p>
+                <p style="color: #150E40; font-weight: bold;">Neftali Arturo Hernandez Vergara</p>
+                <p style="color: #150E40;">CEO OF RealState-220100</p>
+                <p style="color: #F21651;">*If you did not create this account, please ignore this message</p>
+            </div>
+        `,
+    });
+    
 }
 
 export{emailRegister}
