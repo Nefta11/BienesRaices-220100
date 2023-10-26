@@ -4,6 +4,9 @@ import { generateToken } from "../lib/tokens.js"
 import { emailRegister } from "../lib/emails.js"
 import { request, response } from "express"
 import nodemon from "nodemon"
+import csurf from "csurf"
+
+
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {

@@ -3,16 +3,27 @@
 // Importanto la libreria de express para activar la comunicación  HTTP
 //cs= require("express")
 import express from "express";  //ECMS6
-import generalRoutes from './routes/generalRoutes.js'
-import userRoutes from './routes/userRoutes.js'
-import db from './config/bd.js'
-import User from './models/User..js'
+import generalRoutes from './routes/generalRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import db from './config/bd.js';
+import User from './models/User..js';
 import dotenv from 'dotenv'
+import csrf from 'csurf';
+import cookieParser from "cookie-parser";
+
 dotenv.config({path:'src/.env'})
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
 const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
+
+//Habilitar coojieparser para leer, escribir y eliminar en las cookies del navegador
+app.use(cookieParser())
+//Habilitar CSRF PROTECTION
+app.use({
+    cookie:true
+});
+
 
 //Agregar y configurar el TemplateEngine 
 app.set('view engine','pug')
