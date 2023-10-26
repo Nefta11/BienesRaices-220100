@@ -26,7 +26,7 @@ const emailRegister = async (userData)=>{
             <div style="background-color: #FBCAEA; padding: 20px;">
                 <p style="color: #3D1773; font-size: 24px; font-weight: bold; text-align: center;">Hello, ${name}</p>
                 <p style="color: #150E40;">Thank you for choosing to search, sell, and buy properties. If you want to continue using our platform, please click the link below:</p>
-                <a href="http://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/auth/confirm-account" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
+                <a href="http://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/login/confirm" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
                 <p style="color: #150E40;">Best regards</p>
                 <p style="color: #F21651;">*If you did not create this account, please ignore this message</p>
                 <br>
