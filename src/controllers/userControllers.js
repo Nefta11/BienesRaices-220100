@@ -85,7 +85,7 @@ const insertUser = async (request, response) => {
 }
 const confirmAccount = async (req,res) =>{
     //TODO Verificar token
-    const tokenRecived= request.params.token
+    const tokenRecived= req.params.token
     const userOwner= await User.findOne({where:{token:tokenRecived}})
     
     if (!userOwner){
