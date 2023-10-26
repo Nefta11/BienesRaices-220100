@@ -98,6 +98,9 @@ const confirmAccount = async (req,res) =>{
     }    
     else{
         console.log("El token existe")
+        User.token='';
+        User.verified =true;
+        User.save();//esta operacion realiza el update en la base de datos
         res.render('auth/confirm-account',{
             page:'status verification',
             error: false,
@@ -105,4 +108,6 @@ const confirmAccount = async (req,res) =>{
         })
     }
 }
+
+
 export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount };
