@@ -24,7 +24,7 @@ const emailRegister = async (userData)=>{
         text: 'Welcome to Real State-220100, to continue is mandatory that you click on the link below to activate your account.',
         html: `
             <div style="background-color: #FBCAEA; padding: 20px;">
-                <p style="color: #3D1773; font-size: 29px  text-align: center font-weight: bold;">Hello, ${name}</p>
+                <p style="color: #3D1773; font-size: 24px; font-weight: bold; text-align: center;">Hello, ${name}</p>
                 <p style="color: #150E40;">Thank you for choosing to search, sell, and buy properties. If you want to continue using our platform, please click the link below:</p>
                 <a href="#" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
                 <p style="color: #150E40;">Best regards</p>
@@ -46,7 +46,7 @@ const emailRegister = async (userData)=>{
                     </tr>
                 </table>
                 
-                <p style="color: #150E40 font-weight: bold;">CEO OF RealState-220100</p>
+                <p style="color: #150E40; font-weight: bold;">CEO OF RealState-220100</p>
             </div>
         `,
     });
