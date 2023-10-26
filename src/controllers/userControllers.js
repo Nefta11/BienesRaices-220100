@@ -87,12 +87,22 @@ const confirmAccount = async (req,res) =>{
     //TODO Verificar token
     const tokenRecived= request.params.token
     const userOwner= await User.findOne({where:{token:tokenRecived}})
-    if (!userOwner)
-        console.log("El token es invalido....")
-    else
+    
+    if (!userOwner){
+        console.log("El token no existe")
+        res.render('auth/confirm-account',{
+            page:'status verification',
+            error: true,
+            msg:'we have found some inssues in account verification.'
+        })
+    }    
+    else{
         console.log("El token existe")
-    //TODO actualizar el estado de la verificacion en tabla usuarios 
-    //TODO axtualizar a vacio el token de activación
-    //TODO PINTAR LA PAGINA DE ERROR 
+        res.render('auth/confirm-account',{
+            page:'status verification',
+            error: false,
+            msg:'Your account has been confirmed succesfuly.'
+        })
+    }
 }
 export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount };
