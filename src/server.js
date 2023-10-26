@@ -18,11 +18,9 @@ const app = express();
 const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
 
 //Habilitar coojieparser para leer, escribir y eliminar en las cookies del navegador
-app.use(cookieParser())
+//app.use(cookieParser())
 //Habilitar CSRF PROTECTION
-app.use({
-    cookie:true
-});
+//app.use(csrf({cookie:true}));
 
 
 //Agregar y configurar el TemplateEngine 
