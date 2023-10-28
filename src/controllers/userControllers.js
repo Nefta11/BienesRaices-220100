@@ -109,7 +109,7 @@ const confirmAccount = async (req,res) =>{
     }    
     else{
         console.log("El token existe")
-        userOwner.token='';
+        userOwner.token = null;// Actualice de cadena vacia a null ya que me marcaba error de duplicidad.
         userOwner.verified =true;
        await userOwner.save();//esta operacion realiza el update en la base de datos
        
