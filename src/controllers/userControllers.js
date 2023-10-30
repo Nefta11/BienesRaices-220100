@@ -4,7 +4,7 @@ import { generateToken } from "../lib/tokens.js"
 import { emailRegister } from "../lib/emails.js"
 import { request, response } from "express"
 import nodemon from "nodemon"
-//import csurf from "csurf"
+import csurf from "csurf"
 
 
 
@@ -12,16 +12,16 @@ const formLogin = (request, response) => {
     response.render("auth/login.pug", {
         page: "Login",
         isLogged: false,
-        //csrfToken:request.csurfToken()
+        csrfToken:request.csrfToken()
     })
 }
 
 const formRegister = (request, response) => {
-    //console.log(request.csrfToken())
+    console.log(request.csrfToken())
     response.render("auth/register.pug",
         {
             page: "Creating a new account...",
-            //csrfToken:request.csurfToken()
+            csrfToken:request.csrfToken()
         })
 }
 
@@ -29,7 +29,7 @@ const formPasswordRecovery = (request, response) => {
     response.render("auth/password-recovery.pug",
         {
             page: "Password Recovery",
-            //csrfToken:request.csurfToken()
+            csrfToken:request.csrfToken()
         })
 }
 
@@ -57,7 +57,7 @@ const insertUser = async (request, response) => {
     if (userExists) {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
-            //csrfToken:request.csurfToken(),
+            csrfToken:request.csrfToken(),
             errors: [{ msg: `El usuario con: ${request.body.email} already exist` }],
             user: {
                 name: request.body.name,
@@ -77,14 +77,14 @@ const insertUser = async (request, response) => {
         response.render("templates/message.pug", {
             page: "New Account Created",
             email: email,
-           // csrfToken:request.csurfToken()
+            csrfToken:request.csrfToken()
         });
         
     } else {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
             errors: resultadoValidacion.array(),
-            //csrfToken:request.csurfToken(),
+            csrfToken:request.csrfToken(),
             user: {
                 name: request.body.name,
                 email: request.body.email
@@ -103,7 +103,7 @@ const confirmAccount = async (req,res) =>{
         res.render('auth/confirm-account',{
             page:'status verification',
             error: true,
-            //csrfToken:req.csurfToken(),
+            csrfToken:req.csrfToken(),
             msg:'we have found some inssues in account verification.'
         })
     }    
@@ -116,7 +116,7 @@ const confirmAccount = async (req,res) =>{
         res.render('auth/confirm-account',{
             page:'status verification',
             error: false,
-            //csrfToken:req.csurfToken(),
+            csrfToken:req.csrfToken(),
             msg:'Your account has been confirmed succesfuly.'
         })
     }
