@@ -108,5 +108,13 @@ const confirmAccount = async (req,res) =>{
     }
 }
 
+const updatePassword = (req,res) => {
 
-export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount };
+}
+
+const emailChangePassword = (req,res) => {
+    
+}
+
+
+export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount,updatePassword , emailChangePassword };
