@@ -112,8 +112,27 @@ const updatePassword = (req,res) => {
 
 }
 
-const emailChangePassword = (req,res) => {
+const emailChangePassword = async (req,res) => {
 console.log(`El usuario ha solicitado cambiar su contraseña por lo que se le enviara un correo electronico a ${req.body.email} con la liga para actualizar su contraseña `)    
+
+await check("email").notEmpty().withMessage("This fieldis required").isEmail().withMessage("This is not emailformat").run(req)
+
+let resultadoValidacion = validationResult(request)
+const userExists = await User.findOne({ where: { email: request.body.email } })
+
+const {name,email,password} =request.body
+
+    if (userExists) {
+        response.render("auth/register.pug", {
+            page: "Creating a new account...",
+            errors: [{ msg: `El usuario con: ${request.body.email} already exist` }],
+            user: {
+                name: request.body.name,
+                email: request.body.email
+            },
+        })
+    }
+return 0;
 }
 
 
