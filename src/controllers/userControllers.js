@@ -113,7 +113,7 @@ const updatePassword = (req,res) => {
 }
 
 const emailChangePassword = (req,res) => {
-    
+console.log(`El usuario ha solicitado cambiar su contraseña por lo que se le enviara un correo electronico a ${req.body.email} con la liga para actualizar su contraseña `)    
 }
 
 

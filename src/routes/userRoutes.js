@@ -5,8 +5,8 @@ const router = express.Router();
 router.get("/", formLogin)
 router.get("/register", formRegister)
 router.get("/password-recovery", formPasswordRecovery)
-router.post("/update-recovery", emailChangePassword)
-router.post("/password-recovery", updatePassword)
+router.post("/password-recovery", emailChangePassword)
+router.post("/update-password", updatePassword)
 router.post("/register",insertUser)
 router.get("/confirm/:token",confirmAccount)
 
