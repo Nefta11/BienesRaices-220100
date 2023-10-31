@@ -8,8 +8,10 @@ import userRoutes from './routes/userRoutes.js';
 import db from './config/bd.js';
 import User from './models/User..js';
 import dotenv from 'dotenv'
-import csrf from 'csurf';
-import cookieParser from "cookie-parser";
+import helmet from "helmet";
+
+
+
 
 dotenv.config({path:'src/.env'})
 
@@ -17,10 +19,8 @@ dotenv.config({path:'src/.env'})
 const app = express();
 const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
 
-//Habilitar coojieparser para leer, escribir y eliminar en las cookies del navegador
-app.use(cookieParser())
-//Habilitar CSRF PROTECTION
-app.use(csrf({cookie:true}));
+//HABILITAR LA PROTECIÓN A TRAVES DE HELMET
+app.use(helmet())
 
 
 //Agregar y configurar el TemplateEngine 
@@ -46,11 +46,11 @@ app.use(express.urlencoded({extended: false
 }))
 
 
-app.listen(port,(request,response ) => //Le indicamos a la instancia express que comience a escuchar peticiones
+app.listen(process.env.SERVER_PORT,(request,response ) => //Le indicamos a la instancia express que comience a escuchar peticiones
 
 {
 console.log(`El servicio HTTP ha sido iniciado.../n 
-El servicio esta escuchando por el puerto: ${port}`)
+El servicio esta escuchando por el puerto: ${process.env.SERVER_PORT}`)
 }) // Le indicamos a la instancia express que comience a escuchar las peticiones
 
 

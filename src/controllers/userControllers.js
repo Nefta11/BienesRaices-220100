@@ -2,26 +2,19 @@ import User from "../models/User..js"
 import { check, validationResult } from 'express-validator'
 import { generateToken } from "../lib/tokens.js"
 import { emailRegister } from "../lib/emails.js"
-import { request, response } from "express"
-import nodemon from "nodemon"
-import csurf from "csurf"
-
 
 
 const formLogin = (request, response) => {
     response.render("auth/login.pug", {
         page: "Login",
         isLogged: false,
-        csrfToken:request.csrfToken()
     })
 }
 
 const formRegister = (request, response) => {
-    console.log(request.csrfToken())
     response.render("auth/register.pug",
         {
             page: "Creating a new account...",
-            csrfToken:request.csrfToken()
         })
 }
 
@@ -29,7 +22,6 @@ const formPasswordRecovery = (request, response) => {
     response.render("auth/password-recovery.pug",
         {
             page: "Password Recovery",
-            csrfToken:request.csrfToken()
         })
 }
 
@@ -57,12 +49,11 @@ const insertUser = async (request, response) => {
     if (userExists) {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
-            csrfToken:request.csrfToken(),
             errors: [{ msg: `El usuario con: ${request.body.email} already exist` }],
             user: {
                 name: request.body.name,
                 email: request.body.email
-            }
+            },
         })
     }
 
@@ -76,15 +67,13 @@ const insertUser = async (request, response) => {
         
         response.render("templates/message.pug", {
             page: "New Account Created",
-            email: email,
-            csrfToken:request.csrfToken()
+            email: email
         });
         
     } else {
         response.render("auth/register.pug", {
             page: "Creating a new account...",
             errors: resultadoValidacion.array(),
-            csrfToken:request.csrfToken(),
             user: {
                 name: request.body.name,
                 email: request.body.email
@@ -103,20 +92,17 @@ const confirmAccount = async (req,res) =>{
         res.render('auth/confirm-account',{
             page:'status verification',
             error: true,
-            csrfToken:req.csrfToken(),
-            msg:'we have found some inssues in account verification.'
+            msg:'we have found some inssues in account verification.',
         })
     }    
     else{
         console.log("El token existe")
         userOwner.token = null;// Actualice de cadena vacia a null ya que me marcaba error de duplicidad.
         userOwner.verified =true;
-       await userOwner.save();//esta operacion realiza el update en la base de datos
-       
+        await userOwner.save();//esta operacion realiza el update en la base de datos
         res.render('auth/confirm-account',{
             page:'status verification',
             error: false,
-            csrfToken:req.csrfToken(),
             msg:'Your account has been confirmed succesfuly.'
         })
     }
