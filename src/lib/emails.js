@@ -48,6 +48,10 @@ const emailRegister = async (userData) => {
         </table>
     
         <p style="color: #150E40; font-weight: bold;">CEO OF RealState-220100</p>
+        <br>
+        <footer>
+        &copy; RealState-220100
+        </footer>
     </div>
     
         `,
@@ -93,11 +97,11 @@ const emailPasswordRecovery = async (userData) => {
         </table>
     
         <p style="color: #150E40; font-weight: bold;">CEO OF RealState-220100</p>
+        <br>
+        <footer>
+        &copy; RealState-220100
+        </footer>
     </div>
-    <footer>
-    &copy; RealState-220627
-    </footer>
-    
         `,
     });
 
