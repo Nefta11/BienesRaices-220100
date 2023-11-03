@@ -58,7 +58,7 @@ const emailRegister = async (userData) => {
 
 const emailPasswordRecovery = async (userData) => {
     const { name, email, token } = userData
-    console.log(`Intentando enviar el correo electronico de activacion cuenta al usuario ${userData.email}`)
+    console.log(`Intentando enviar un correo electronico dpara la recuperación de cuenta del usuario: ${email}`)
     //Creando y enviando el correo
     await transport.sendMail({
         from: '220100@utxicotepec.edu.mx',
@@ -70,8 +70,8 @@ const emailPasswordRecovery = async (userData) => {
         <header style=" background-color: #F21651; padding: 20px;">
             <p style="color: #3D1773; font-size: 24px; font-weight: bold; text-align: center;">Hello, ${name}</p>
         </header>
-        <p style="color: #150E40;">Thank you for choosing to search, sell, and buy properties. If you want to continue using our platform, please click the link below:</p>
-        <a href="http://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/login/confirm/${token}" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
+        <p style="color: #150E40;">Thank you for choosing to search, sell, and buy properties. To continue using our platform, please click the link below to activate your account:</p>
+        <a href="http://${process.env.SERVER_HOST}:${process.env.SERVER_PORT}/login/update-password/${token}" style="background-color: #F2059F; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Click here to activate your account</a>
         <p style="color: #150E40;">Best regards</p>
         <p style="color: #F21651;">*If you did not create this account, please ignore this message</p>
         <br>
@@ -94,6 +94,9 @@ const emailPasswordRecovery = async (userData) => {
     
         <p style="color: #150E40; font-weight: bold;">CEO OF RealState-220100</p>
     </div>
+    <footer>
+    &copy; RealState-220627
+    </footer>
     
         `,
     });
