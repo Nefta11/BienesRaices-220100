@@ -102,6 +102,6 @@ const emailPasswordRecovery = async (userData) => {
 }
 
 
-export { emailRegister }
+export { emailRegister, emailPasswordRecovery }
 
 

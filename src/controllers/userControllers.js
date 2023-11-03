@@ -1,7 +1,7 @@
 import User from "../models/User..js"
 import { check, validationResult } from 'express-validator'
 import { generateToken } from "../lib/tokens.js"
-import { emailRegister } from "../lib/emails.js"
+import { emailRegister, emailPasswordRecovery } from "../lib/emails.js"
 
 
 const formLogin = (request, response) => {
@@ -12,11 +12,11 @@ const formLogin = (request, response) => {
 }
 
 const formPasswordUpdate = (request, response) => {
-    
+
     response.render("../views/auth/password-update.pug", {
         isLogged: false,
         page: "Password update",
-        
+
     })
 }
 
@@ -118,15 +118,15 @@ const confirmAccount = async (req, res) => {
 }
 
 const updatePassword = (req, res) => {
-return 0;
+    return 0;
 }
 
 const emailChangePassword = async (req, res) => {
     console.log(`El usuario ha solicitado cambiar su contraseña por lo que se le enviara un correo electronico a ${req.body.email} con la liga para actualizar su contraseña `)
     await check("email").notEmpty().withMessage("Your email is required").isEmail().withMessage("This is not email format").run(req)
     let resultadoValidacion = validationResult(req)
-    
-    
+
+
     const { name, email } = req.body;
 
 
@@ -137,34 +137,53 @@ const emailChangePassword = async (req, res) => {
             }
         });
 
-    
 
-    if (!userExists) {
-        console.log(`El usuario: ${email} que esta intentando recuperar su contraseña no existe`);
-        res.render("templates/message.pug", {
-            page: "User nor found",
-            message: `The user associated with: ${email} does not exist in database`,
-            type: "error"
+
+        if (!userExists) {
+            console.log(`El usuario: ${email} que esta intentando recuperar su contraseña no existe`);
+            res.render("templates/message.pug", {
+                page: "User nor found",
+                message: `The user associated with: ${email} does not exist in database`,
+                type: "error"
+            });
+
+        }
+        else {
+
+            const token = generateToken();
+            userExists.token = token;
+            userExists.save();
+
+            //TODO: enviar el correo con el nuevo token
+            emailPasswordRecovery({
+                name: userExists.name,
+                email: userExists.email,
+                token: userExists.token
+            })
+            res.render('templates/message', {
+                page: 'Email Send',
+                msg: `We have sent an email to account: ${email}`,
+                type: "success"
+                // button:'Now you can login',
+
+            });
+        }
+    }
+    else {
+        res.render('auth/confirm-account', {
+            page: 'Status verification.',
+            error: false,
+            msg: 'Your account has been confirmed successfuly.',
+            button: 'Now you can login',
+
         });
+    }
 
-    }
-    else{
-        //TODO generar un nuevo token
-        const token =generateToken();
-        userExists.token= token;
-        userExists.save();
-    }
-}
-else {
-    res.render("auth/recovery.pug", ({
-    page: "Password recovery",
-    errors: resultadoValidacion.array(),
-    email
-    }))
-}
+
+
 
     return 0;
 }
 
 
-export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount, updatePassword, emailChangePassword,formPasswordUpdate};
+export { formLogin, formRegister, formPasswordRecovery, insertUser, confirmAccount, updatePassword, emailChangePassword, formPasswordUpdate };
