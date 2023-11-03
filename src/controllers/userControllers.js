@@ -118,12 +118,11 @@ const confirmAccount = async (req, res) => {
 }
 
 const updatePassword = (req, res) => {
-
+return 0;
 }
 
 const emailChangePassword = async (req, res) => {
     console.log(`El usuario ha solicitado cambiar su contraseña por lo que se le enviara un correo electronico a ${req.body.email} con la liga para actualizar su contraseña `)
-
     await check("email").notEmpty().withMessage("Your email is required").isEmail().withMessage("This is not email format").run(req)
     let resultadoValidacion = validationResult(req)
     const { email, password } = req.body
