@@ -149,7 +149,6 @@ const emailChangePassword = async (req, res) => {
 
         }
         else {
-
             const token = generateToken();
             userExists.token = token;
             userExists.save();
@@ -178,10 +177,6 @@ const emailChangePassword = async (req, res) => {
 
         });
     }
-
-
-
-
     return 0;
 }
 
