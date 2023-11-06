@@ -68,18 +68,17 @@ const insertUser = async (request, response) => {
 
     else if (resultadoValidacion.isEmpty()) {
         const token = generateToken()
-        
+
         let newUser = await User.create({
             name, email, password, token
-        })
-
-        emailRegister({ email, name, token })
-
+        });
         response.render("templates/message.pug", {
             page: "New Account Created",
             email: email,
             type:"success"
         });
+
+        emailRegister({ email, name, token })
 
     } else {
         response.render("auth/register.pug", {
