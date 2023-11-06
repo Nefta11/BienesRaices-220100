@@ -5,7 +5,7 @@ import { emailRegister, emailPasswordRecovery } from "../lib/emails.js"
 
 
 const formLogin = (request, response) => {
-    response.render("auth/login.pug", {
+    response.render("../views/auth/login.pug", {
         page: "Login",
         isLogged: false,
     })
@@ -28,7 +28,7 @@ const formRegister = (request, response) => {
 }
 
 const formPasswordRecovery = (request, response) => {
-    response.render("auth/password-recovery.pug",
+    response.render("auth/recovery.pug",
         {
             page: "Password Recovery",
         })
@@ -68,6 +68,7 @@ const insertUser = async (request, response) => {
 
     else if (resultadoValidacion.isEmpty()) {
         const token = generateToken()
+        
         let newUser = await User.create({
             name, email, password, token
         })
@@ -76,7 +77,8 @@ const insertUser = async (request, response) => {
 
         response.render("templates/message.pug", {
             page: "New Account Created",
-            email: email
+            email: email,
+            type:"success"
         });
 
     } else {
