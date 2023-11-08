@@ -6,7 +6,22 @@ html(lang="en")
         title Real State &lt; 220100&lt; |HOME #{page}
         link(rel="stylesheet", href="/css/app.css")
     body.main-h-screen.bg-Fondo
+        header
+            .container.mx.auto 
+                h1.text-2xl.tetx-white.font-extrabold.text-center(class="text-purple-700/100") REAL
+                    span.font-normal.text-black-900 ESTATE
+                    
+
         main(class="mx-auto container mt-10 px-2")
         block content
         block register
         block password
+            
+            
+            script.
+                setTimeout(function(){
+                    var alerts = document.querySelectorAll('[role="alert"]');
+                    alerts.forEach(function(alert) {
+                        alert.style.display = 'none';
+                    });
+                }, 3000);

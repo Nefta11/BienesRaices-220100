@@ -9,6 +9,7 @@ import db from './config/bd.js';
 import User from './models/User..js';
 import dotenv from 'dotenv'
 import helmet from "helmet";
+import cookieParser from "cookie-parser";
 
 
 
@@ -36,6 +37,12 @@ try{
     console.log("Hubo un error al intentar conectarme a la db.")
     console.log(error)
 }
+
+
+//HABILITAR COOKIEPARSER PARA LEER, ESCRIBIR Y ELIMINAR EN LAS COOKIES DEL NAVEGADOR
+app.use(cookieParser({
+    cookie:true
+}))
 
 
 app.use(express.static('./src/public'))
