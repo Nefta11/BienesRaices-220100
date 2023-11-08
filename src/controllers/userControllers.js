@@ -251,7 +251,7 @@ const authenticateUser = async (request, response) => {
     let resultadoValidacion = validationResult(request)
     if (resultadoValidacion.isEmpty()) {
         const { email, password } = request.body;
-        console.log("El usuario: ${email} esta intentando acceder a la plataforma")
+        console.log(`El usuario: ${email} esta intentando acceder a la plataforma`)
         //TODO Verificar que el usuario esta registrado en la base de datos
         const userExists = await User.findOne({ where: { email } })
         //TODO En caso de que no exista mostrar pagina de error
@@ -271,18 +271,18 @@ const authenticateUser = async (request, response) => {
                 //TODO Pintar la pagina de error
                 response.render("../views/auth/login.pug", {
                     page: "Login",
-                    errors: [{ msg: "The user associated to: ${email} was found but not verified" }],
+                    errors: [{ msg: `The user associated to: ${email} was found but not verified` }],
                     user: {
-                        email: request.body.email
+                        email
                     }
                 })
             } else {
-                if (userExists.verifyPassword(password)) {
+                if (!userExists.verifyPassword(password)) {
                     response.render("../views/auth/login.pug", {
                         page: "Login",
                         errors: [{ msg: "User and password does not match" }],
                         user: {
-                            email: email
+                            email
                         }
                     })
                 } else {
