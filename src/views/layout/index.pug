@@ -8,7 +8,8 @@ html(lang="en")
         script(src="/js/setTime.js") 
     body.main-h-screen.bg-Fondo
 
-        include nabvar
+        if showHeader
+            include nabvar
         main(class="mx-auto container mt-10 px-2")
         block content
         block register

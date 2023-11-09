@@ -312,7 +312,9 @@ const authenticateUser = async (request, response) => {
 }
 
 const userHome = (req, res) => {
-    res.render('user/home')
+    res.render('user/home', {
+        showHeader:true
+    })
 }
 
 
