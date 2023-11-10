@@ -7,6 +7,7 @@ import generalRoutes from './routes/generalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import db from './config/bd.js';
 import User from './models/User..js';
+import propertyRoutes from './routes/propertyesRoutes.js'
 import dotenv from 'dotenv'
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
@@ -27,6 +28,7 @@ app.use(helmet())
 //Agregar y configurar el TemplateEngine 
 app.set('view engine','pug')
 app.set('views','./src/views')
+
 
 try{
     db.authenticate();
@@ -64,7 +66,7 @@ El servicio esta escuchando por el puerto: ${process.env.SERVER_PORT}`)
 //Routing- controlando las peticiones que se reciben por medio del endpoint (url)
 app.use('/',generalRoutes)
 app.use('/login',userRoutes)
-
+app.use('/properties',propertyRoutes)
 
 //queda pendiente re.render() -> que pinta una interfaz gráfica a través de un motor de plantillas (template engine)
 
