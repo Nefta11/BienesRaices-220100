@@ -22,7 +22,11 @@ const app = express();
 const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
 
 //HABILITAR LA PROTECIÓN A TRAVES DE HELMET
-app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+    directives:["'self"],
+    scriprSrc:["'self','https://unpkg.com',''https://cloudflare.com"]
+
+}))
 
 
 //Agregar y configurar el TemplateEngine 
@@ -49,6 +53,9 @@ app.use(cookieParser({
 
 app.use(express.static('./src/public'))
 //mvc -model view contoller //
+
+
+
 
 //Hbilitando el acceso a las propiedades del DOM
 app.use(express.urlencoded({extended: false
