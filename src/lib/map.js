@@ -16,6 +16,20 @@
     marker=e.target
     const position = marker.getLatLng()
         console.log(`El usuario solto el marcador en las siguientes cordenadas: ${position.lat},${position.lng}`)
-        map.panTo(new L.LatLng(position.lat, position.lng))})
+        map.panTo(new L.LatLng(position.lat, position.lng))
+    })
+    //TODO obtener la información de la dirección fisica
+    geocodeService.reverse().latLng(position, 13).run(function(error, result)
+    {
+        console.log(`La información calculada por geocoder al intentar hacer la georeferencia inversa es: ${result}`)
+        marker.bind.Popup(result.address.LongLabel)
+        document.querySelector('.street').textContent=result.address?.Address ?? '';
+        document.querySelector('#street').value=result.address?.Address ?? '';
+        document.querySelector('#lat').value=result.address?.Address ?? '';
+        document.querySelector('#lng').value=result.address?.Address ?? '';
+
+    })
+
 })();
+//geocoder , leaflet y sri libreias obligadas para trabajar con LEAFLET VER EN CREATE.PUG
 
