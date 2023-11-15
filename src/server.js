@@ -9,7 +9,7 @@ import db from './config/bd.js';
 import User from './models/User..js';
 import propertyRoutes from './routes/propertyesRoutes.js'
 import dotenv from 'dotenv'
-import helmet from "helmet";
+//import helmet from "helmet";
 import cookieParser from "cookie-parser";
 
 
@@ -20,7 +20,7 @@ dotenv.config({ path: 'src/.env' })
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
 const port = 3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
-
+/*
 //HABILITAR LA PROTECIÓN A TRAVES DE HELMET
 app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -30,7 +30,7 @@ app.use(helmet.contentSecurityPolicy({
         imgSrc: ["'self'", 'data:', 'https://unpkg.com', 'https://cloudflare.com', 'https://cdnjs.cloudflare.com', 'https://a.tile.openstreetmap.org', 'https://b.tile.openstreetmap.org', 'https://c.tile.openstreetmap.org'],
         connectSrc: ["'self'", 'https://tile-provider-domain.com'],
     },
-}));
+}));*/
 
 
 //Agregar y configurar el TemplateEngine 
