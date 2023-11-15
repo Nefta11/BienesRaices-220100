@@ -16,7 +16,7 @@
   \************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n(function () {\r\n    const lat = 20.223653;\r\n    const lng = -97.947119;\r\n    const map = L.map('map').setView([lat, lng], 16);\r\n    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{\r\n        attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'\r\n    }).addTo(map);  \r\n    L.marker([lat, lng]).addTo(map)// MUESTRA LA MARCA DE MI CASA\r\n    .bindPopup('MI CASA.<br> NEFTAHOUSE.')\r\n    .openPopup();      \r\n})();\r\n\r\n\n\n//# sourceURL=webpack://bienesraices-220100/./src/lib/map.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n(function () {\r\n    const lat = 20.223653;\r\n    const lng = -97.947119;\r\n    const map = L.map('map').setView([lat, lng], 16);\r\n    let marker\r\n    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{\r\n        attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'\r\n    }).addTo(map);  \r\n    marker = new L.marker([lat,lng], {\r\n        draggable: true,\r\n        autoPan: true,\r\n    }).addTo(map);  \r\n\r\n    //TODO obtener lat y lng del marker\r\n    marker.on('moveend', function(e){\r\n    marker=e.target\r\n    const position = marker.getLatLng()\r\n        console.log(`El usuario solto el marcador en las siguientes cordenadas: ${position.lat},${position.lng}`)\r\n        map.panTo(new L.LatLng(position.lat, position.lng))})\r\n})();\r\n\r\n\n\n//# sourceURL=webpack://bienesraices-220100/./src/lib/map.js?");
 
 /***/ })
 
