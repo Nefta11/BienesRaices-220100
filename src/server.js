@@ -23,10 +23,14 @@ const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y 
 
 //HABILITAR LA PROTECIÓN A TRAVES DE HELMET
 app.use(helmet.contentSecurityPolicy({
-    directives:["'self"],
-    scriprSrc:["'self','https://unpkg.com',''https://cloudflare.com"]
-
-}))
+    directives:{
+        defaultSrc:["'self'"],
+        scriptSrc:["'self'",'https://unpkg.com','https://cdn.cloudflare.com'],
+        styleSrc:["'self'",'https://unpkg.com','https://cdn.cloudflare.com',"'unsafe-inline'"],
+        imgSrc:["'self'",'data:','https://unpkg.com'],
+        fontSrc:["'self'", 'https://unpkg.com']
+    }
+}));
 
 
 //Agregar y configurar el TemplateEngine 
