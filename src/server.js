@@ -15,35 +15,35 @@ import cookieParser from "cookie-parser";
 
 
 
-dotenv.config({path:'src/.env'})
+dotenv.config({ path: 'src/.env' })
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
 const app = express();
-const port=3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
+const port = 3000;    //definimos el puerto, la maquina tinen 64400 puertos mtb y los primeros 1024 los ocupra el s.o
 
 //HABILITAR LA PROTECIÓN A TRAVES DE HELMET
 app.use(helmet.contentSecurityPolicy({
-    directives:{
-        defaultSrc:["'self'"],
-        scriptSrc:["'self'",'https://unpkg.com','https://cdn.cloudflare.com'],
-        styleSrc:["'self'",'https://unpkg.com','https://cdn.cloudflare.com',"'unsafe-inline'"],
-        imgSrc:["'self'",'data:','https://unpkg.com'],
-        fontSrc:["'self'", 'https://unpkg.com']
-    }
+    directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", 'https://unpkg.com', 'https://cdnjs.cloudflare.com', "'unsafe-eval'"],
+        styleSrc: ["'self'", 'https://unpkg.com', 'https://cloudflare.com', 'https://cdnjs.cloudflare.com'],
+        imgSrc: ["'self'", 'data:', 'https://unpkg.com', 'https://cloudflare.com', 'https://cdnjs.cloudflare.com', 'https://a.tile.openstreetmap.org', 'https://b.tile.openstreetmap.org', 'https://c.tile.openstreetmap.org'],
+        connectSrc: ["'self'", 'https://tile-provider-domain.com'],
+    },
 }));
 
 
 //Agregar y configurar el TemplateEngine 
-app.set('view engine','pug')
-app.set('views','./src/views')
+app.set('view engine', 'pug')
+app.set('views', './src/views')
 
 
-try{
+try {
     db.authenticate();
     console.log("La conexión a labase de datos a sido exitosa")
     db.sync()
     console.log("Se han sincronizado las tablas existentes en la bvase de datos")
-}catch(error){
+} catch (error) {
     console.log("Hubo un error al intentar conectarme a la db.")
     console.log(error)
 }
@@ -51,7 +51,7 @@ try{
 
 //HABILITAR COOKIEPARSER PARA LEER, ESCRIBIR Y ELIMINAR EN LAS COOKIES DEL NAVEGADOR
 app.use(cookieParser({
-    cookie:true
+    cookie: true
 }))
 
 
@@ -62,22 +62,23 @@ app.use(express.static('./src/public'))
 
 
 //Hbilitando el acceso a las propiedades del DOM
-app.use(express.urlencoded({extended: false
+app.use(express.urlencoded({
+    extended: false
 }))
 
 
-app.listen(process.env.SERVER_PORT,(request,response ) => //Le indicamos a la instancia express que comience a escuchar peticiones
+app.listen(process.env.SERVER_PORT, (request, response) => //Le indicamos a la instancia express que comience a escuchar peticiones
 
 {
-console.log(`El servicio HTTP ha sido iniciado.../n 
+    console.log(`El servicio HTTP ha sido iniciado.../n 
 El servicio esta escuchando por el puerto: ${process.env.SERVER_PORT}`)
 }) // Le indicamos a la instancia express que comience a escuchar las peticiones
 
 
 //Routing- controlando las peticiones que se reciben por medio del endpoint (url)
-app.use('/',generalRoutes)
-app.use('/login',userRoutes)
-app.use('/properties',propertyRoutes)
+app.use('/', generalRoutes)
+app.use('/login', userRoutes)
+app.use('/properties', propertyRoutes)
 
 //queda pendiente re.render() -> que pinta una interfaz gráfica a través de un motor de plantillas (template engine)
 
