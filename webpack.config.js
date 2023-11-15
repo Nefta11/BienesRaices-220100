@@ -1,12 +1,12 @@
-import Path  from "path"
+import path from 'path'
 
 export default {
-    mode:"development",
+    mode: 'development',
     entry:{
-        map:'./src/lib/map.js'
+        map: './src/lib/map.js'
     },
-    output:{
-        filename:'[name].js',
-        path: Path.resolve('./src/public/js')
+    output: {
+        filename: '[name].js',
+        path: path.resolve('./src/public/js')
     }
 }
