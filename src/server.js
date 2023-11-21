@@ -6,11 +6,12 @@ import express from "express";  //ECMS6
 import generalRoutes from './routes/generalRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import db from './config/bd.js';
-import User from './models/User..js';
+//import User from './models/User..js';
 import propertyRoutes from './routes/propertyesRoutes.js'
 import dotenv from 'dotenv'
 //import helmet from "helmet";
 import cookieParser from "cookie-parser";
+import { User,Property } from "./models/relationships.js";
 
 
 
