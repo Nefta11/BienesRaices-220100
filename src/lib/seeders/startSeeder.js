@@ -29,7 +29,7 @@ const importData = async () => {
 
 const deleteData = async()=>{
     try {
-   await Promise.all([Category.destroy({where:{},truncate:true})])
+    await Promise.all([Category.destroy({where:{},truncate:false}),Price.destroy({where:{},truncate:false})])
     } catch (error) {
         console.log(error);
         exit(1);
@@ -38,6 +38,10 @@ const deleteData = async()=>{
 
 if (process.argv[2] === "-i"){
     importData()
+}
+
+if (process.argv[2] === "-d"){
+    deleteData()
 }
 
 
