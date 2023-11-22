@@ -10,7 +10,8 @@ const importData = async () => {
         //Generar las columnas
     await  db.sync()
         //TODO: Importar los datos
-    await Category.bulkCreate
+    await Category.bulkCreate(categories)
+    console.log("Se han importado los datos de las tabla catalogo de manera correcta ")
     }catch(error){
         console.log(error);
         exit(1);
