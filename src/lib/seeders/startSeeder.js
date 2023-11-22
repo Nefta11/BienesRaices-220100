@@ -6,7 +6,7 @@ import db from '../../config/bd.js'
 const importData = async () => {
     try{
         //Autenticar
-    await db.authentica()
+    await db.authenticate()
         //Generar las columnas
     await  db.sync()
         //TODO: Importar los datos

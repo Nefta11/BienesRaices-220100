@@ -11,7 +11,7 @@
     "js": "webpack --watch",
     "dev":"concurrently \"npm run css\" \"npm run js\"",
     "css": "postcss src/public/css/tailwind.css -o src/public/css/app.css --watch",
-    "db:importData":"node ./lib/seeders/startSeeder.js -i"
+    "db:importData":"node ./src/lib/seeders/startSeeder.js -i"
   },
   "repository": {
     "type": "git",

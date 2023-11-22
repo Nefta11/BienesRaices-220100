@@ -1,16 +1,16 @@
 import { DataTypes } from "sequelize";
 import db from '../config/bd.js'
 
-const Category = db.define('tbc_categories',{
-    name:{
+const Category = db.define('tbc_categories', {
+    name: {
         type: DataTypes.STRING(50),
-        allowNull:false
+        allowNull: false
     },
-    status:{
+    status: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaulValue:true
+        defaultValue: true  // Corregir aquí
     }
-})
+});
 
 export default Category;
