@@ -29,7 +29,7 @@ const importData = async () => {
 
 const deleteData = async()=>{
     try {
-   await Promise.all([])
+   await Promise.all([Category.destroy({where:{},truncate:true})])
     } catch (error) {
         console.log(error);
         exit(1);
