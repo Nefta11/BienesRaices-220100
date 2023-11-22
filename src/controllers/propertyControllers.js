@@ -1,5 +1,5 @@
-import Price from "../models/price";
-import Category from "../models/category";
+import Price from "../models/price.js";
+import Category from "../models/category.js";
 
 
 const formProperty = async (req,res) =>{
