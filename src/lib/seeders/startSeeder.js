@@ -12,6 +12,8 @@ const importData = async () => {
         //TODO: Importar los datos
     await Category.bulkCreate(categories)
     console.log("Se han importado los datos de las tabla catalogo de manera correcta ")
+    exit()
+    
     }catch(error){
         console.log(error);
         exit(1);
