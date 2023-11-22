@@ -5,8 +5,10 @@ import db from '../../config/bd.js'
 
 const importData = async () => {
     try{
-        //TODO: Autenticar
+        //Autenticar
+        db.authentica()
         //TODO: Generar las columnas
+        
         //TODO: Importar los datos
     }catch(error){
         console.log(error);
