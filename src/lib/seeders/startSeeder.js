@@ -28,8 +28,11 @@ const importData = async () => {
 
 
 const deleteData = async()=>{
+
     try {
-    await Promise.all([Category.destroy({where:{},truncate:false}),Price.destroy({where:{},truncate:false})])
+    const queryResetCategoryID= "alter table tbc_categories auto_increment = 1;"
+    const queryResetPriceID= "alter table tbc_prices auto_increment = 1;"
+    await Promise.all([Category.destroy({where:{},truncate:false}),db.query(queryResetCategoryID,{raw:true}),Price.destroy({where:{},truncate:false}),db.query(queryResetPriceID)])
     } catch (error) {
         console.log(error);
         exit(1);
