@@ -25,6 +25,16 @@ const importData = async () => {
     }
 }
 
+
+const deleteData = async()=>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        exit(1);
+    }
+}
+
 if (process.argv[2] === "-i"){
     importData()
 }
