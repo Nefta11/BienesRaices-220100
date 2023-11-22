@@ -5,6 +5,7 @@ import db from '../../config/bd.js'
 
 import Price from '../../models/price.js'
 import prices from './priceSeed.js'
+import { promises } from 'node:dns'
 
 const importData = async () => {
     try{
@@ -28,7 +29,7 @@ const importData = async () => {
 
 const deleteData = async()=>{
     try {
-        
+   await Promise.all([])
     } catch (error) {
         console.log(error);
         exit(1);
