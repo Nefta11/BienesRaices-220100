@@ -6,10 +6,11 @@ import db from '../../config/bd.js'
 const importData = async () => {
     try{
         //Autenticar
-        db.authentica()
-        //TODO: Generar las columnas
-        
+    await db.authentica()
+        //Generar las columnas
+    await  db.sync()
         //TODO: Importar los datos
+    await Category.bulkCreate
     }catch(error){
         console.log(error);
         exit(1);
