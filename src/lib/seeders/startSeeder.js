@@ -3,14 +3,19 @@ import Category from '../../models/category.js'
 import categories from './categorySeed.js'
 import db from '../../config/bd.js'
 
+import Price from '../../models/price.js'
+import prices from './priceSeed.js'
+
 const importData = async () => {
     try{
         //Autenticar
     await db.authenticate()
         //Generar las columnas
     await  db.sync()
-        //TODO: Importar los datos
-    await Category.bulkCreate(categories)
+        // Importar los datos
+    await Promise.all( [
+    Category.bulkCreate(categories),
+    Price.bulkCreate(prices)])
     console.log("Se han importado los datos de las tabla catalogo de manera correcta ")
     exit()
 

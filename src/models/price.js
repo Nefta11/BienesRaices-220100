@@ -9,7 +9,7 @@ const Price = db.define('tbc_price',{
     status:{
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaulValue:true
+        defaultValue:true
     }
 })
 
