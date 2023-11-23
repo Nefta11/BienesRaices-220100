@@ -5,7 +5,7 @@ block content
     .py-5
         h2.text-center.text-2xl.font-extrabold= page
         .bg-white.shadow.py-8.px-4.rounded-xl.mx-auto.max-w-4xl.my-10(class="md:px-10") 
-            form.space-y-8(action="")
+            form.space-y-8(action="/properties/")
                 .space-y-8
                     h3.text-lg.leading-6.font-md.tex-gray-900.font-bold Property general information.
                     p.text-gray-600 Please carefully type the specific data about the property that you want to offer
@@ -59,9 +59,9 @@ block content
                 #map.h-96
                 div
                     p.street
-                input#street(type="hidden", name="street")
-                input#lat(type="hidden", name="lat")
-                input#lng(type="hidden", name="lng")
+                input#street(type="hidden", name="street" value=data.street ? data.street: '')
+                input#lat(type="hidden", name="lat" value=data.lat ? data.lat: '')
+                input#lng(type="hidden", name="lng" value=data.lng ? data.lng: '')
                 input#btn-save.w-full.bg-cyan-500.text-white(class="text-gray-800 font-bold py-3 cursor-pointer bg-blue-200 rounded-xl hover:bg-cyan-600 hover:text-white" type="submit" value="Save")
 block scripts
     script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
