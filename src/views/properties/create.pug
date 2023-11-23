@@ -20,7 +20,7 @@ block content
                         label.block.text-sm.uppercase.text-gray-600.mb-3.font-bold(for="category") Title of category
                         select#category.w-full.px-3.py-2.border.border-gray-300.rounded(name="category")
                             option(value="" selected) -- SELECT CATEGORY --
-                            each category in categories 
+                            each category in categories  
                                 option(value=category.id)=category.name  
                     div(class="md:w-1/2")
                         label.block.text-sm.uppercase.text-gray-600.mb-3.font-bold(for="priceRange") Price range
