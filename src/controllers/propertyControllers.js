@@ -26,7 +26,7 @@ await check("nwc").notEmpty().withMessage("All properties must be").isInt({min:0
 await check("parkingLot").notEmpty().withMessage("All properties must be").isInt({min:1,max:8}).withMessage("").run(req)
 await check("street").notEmpty().withMessage("All properties must be").isInt({min:1,max:8}).withMessage("").run(req)
 
-console.log()
+console.log( )
 }
 
 export {formProperty, saveNewProperty};
