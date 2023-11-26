@@ -15,7 +15,6 @@ import { User,Property } from "./models/relationships.js";
 
 
 
-
 dotenv.config({ path: 'src/.env' })
 
 //INSTANCIAMOS EL MODULO EXPRESS DE LA LIBRERIA PARA DEFINIR EL SERVIDOR QUE ATENDERA LAS PETICIONES
@@ -82,11 +81,6 @@ app.use('/login', userRoutes)
 app.use('/properties', propertyRoutes)
 
 //queda pendiente re.render() -> que pinta una interfaz gráfica a través de un motor de plantillas (template engine)
-
-
-
-
-
 
 
 
