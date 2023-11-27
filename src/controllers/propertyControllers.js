@@ -11,14 +11,15 @@ const formProperty = async (req,res) =>{
     res.render('properties/create.pug',{
         page:'New property',
         showHeader:true,
-        categories,prices
+        categories,prices,
+        data:req.body
     });
 }
 
 const saveNewProperty = async (req,res) =>{
 await check("title").notEmpty().withMessage("The title is required").isLength({min:15, max:150}).withMessage("The title property must have between 15 and 150 characters").run(req)
 await check("description").notEmpty().withMessage("The description is required").run(req)
-console.log(`L a categoria es esta : ${typeof req.body.Category}`)
+console.log(`La categoria es esta : ${typeof req.body.Category}`)
 await check("category").notEmpty().withMessage("All properties must be categorized").isInt({min:1, max:5}).withMessage("The category is unknown").run(req)
 await check("priceRange").notEmpty().withMessage("All properties must be").isInt({min:1,max:8}).withMessage("The price is unknow").run(req)
 await check("nRooms").notEmpty().withMessage("All properties must be").isInt({min:0,max:10}).withMessage("The number of rooms is unknow").run(req)
