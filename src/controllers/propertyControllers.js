@@ -11,7 +11,8 @@ const formProperty = async (req,res) =>{
     res.render('properties/create.pug',{
         page:'New property',
         showHeader:true,
-        categories,prices,
+        categories,
+        prices,
         data:req.body
     });
 }
