@@ -76,4 +76,8 @@ const saveNewProperty = async (req, res) => {
     }
 }
 
-export { formProperty, saveNewProperty }
+const addImages=(req,res) => {
+    console.log('Visualizar el formulario para agregar imagenes')
+}
+
+export { formProperty, saveNewProperty,addImages }
