@@ -19,7 +19,7 @@ const protectRoute = async (req,res,next) =>{
     //VERIFICAR QUE EL TOKEN ESTE CORRECTO
     try {
         const decoded =  JsonWebToken.verify(_token,process.env.JWT_SECRET_HASH_STRING)
-        const loggerUser =await User.findByPk(decoded.userID)
+        const loggerUser =await User.scope('deletePassword').findByPk(decoded.userID)
         console.log(loggerUser)
     } catch (error) {
         console.log(err);
