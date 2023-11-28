@@ -6,13 +6,13 @@ import { check, validationResult } from "express-validator";
 const formProperty = async (req, res) => {
     //TODO: Obtener las categorias, y precios actuales para pintarlos en el formulario
     const [categories, prices] = await Promise.all([Category.findAll(), Price.findAll()])
-    
+
     res.render('properties/create.pug', {
         page: 'New property',
         showHeader: true,
         categories,
         prices,
-        data:req.body
+        data: req.body
 
     });
 
@@ -20,27 +20,27 @@ const formProperty = async (req, res) => {
 }
 
 const saveNewProperty = async (req, res) => {
-    
-    await check("title").notEmpty().withMessage("The title is required").isLength({min:15, max:150}).withMessage("The title property must have between 15 and 150 characters").run(req)
+
+    await check("title").notEmpty().withMessage("The title is required").isLength({ min: 15, max: 150 }).withMessage("The title property must have between 15 and 150 characters").run(req)
 
     await check("description").notEmpty().withMessage("The description is required").run(req)
-    console.log(`La categoria es esta que muestro:  ${typeof req.body.category }`)
+    console.log(`La categoria es esta que muestro:  ${typeof req.body.category}`)
 
-    await check("category").notEmpty().withMessage("All properties must be categorized").isInt({min:1, max:5}).withMessage("The category is unknown").run(req)
+    await check("category").notEmpty().withMessage("All properties must be categorized").isInt({ min: 1, max: 5 }).withMessage("The category is unknown").run(req)
 
-    await check("priceRange").notEmpty().withMessage("All properties must have a price").isInt({min:1, max:8}).withMessage("The price is unknown").run(req)
+    await check("priceRange").notEmpty().withMessage("All properties must have a price").isInt({ min: 1, max: 8 }).withMessage("The price is unknown").run(req)
 
-    await check("nRooms").isInt({min:0, max:10}).withMessage("The number of rooms is unknown").run(req)
+    await check("nRooms").isInt({ min: 0, max: 10 }).withMessage("The number of rooms is unknown").run(req)
 
-    await check("nwc").isInt({min:0, max:5}).withMessage("The number of wc is unknown").run(req)
+    await check("nwc").isInt({ min: 0, max: 5 }).withMessage("The number of wc is unknown").run(req)
 
-    await check("parkingLot").isInt({min:0, max:5}).withMessage("The number of parking lot is unknow").run(req)
+    await check("parkingLot").isInt({ min: 0, max: 5 }).withMessage("The number of parking lot is unknow").run(req)
 
     await check("street").notEmpty().withMessage("The name of the street is unknow").run(req)
 
-    await check("lat").isFloat({min:-90,max:90}).withMessage("the latitude is not in the requested range").run(req)
+    await check("lat").isFloat({ min: -90, max: 90 }).withMessage("the latitude is not in the requested range").run(req)
 
-    await check("lng").isFloat({min:-180, max: 180}).withMessage("The length is not within the requested range.").run(req)
+    await check("lng").isFloat({ min: -180, max: 180 }).withMessage("The length is not within the requested range.").run(req)
 
     //  res.json(validationResult(req))
 
@@ -48,31 +48,31 @@ const saveNewProperty = async (req, res) => {
     console.log(`lat: ${req.body.lat}, long: ${req.body.lng}`)
     let data = req.body
     console.log(data);
-     
-    const {title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng} =req.body;
 
-    if(resultValidate.isEmpty()){
+    const { title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng } = req.body;
+
+    if (resultValidate.isEmpty()) {
         //Creamos
         const savedProperty = await Property.create({
-            title, description, category, priceRange, rooms:nRooms,wc:nwc, parkinglot:parkingLot, street, lat, lng, price_ID:priceRange, category_ID:category
+            title, description, category, priceRange, rooms: nRooms, wc: nwc, parkinglot: parkingLot, street, lat, lng, price_ID: priceRange, category_ID: category
         })
         res.send("Todo bien")
     }
-    else{
+    else {
         const [categories, prices] = await Promise.all([Category.findAll(), Price.findAll()])
         res.render('properties/create.pug', {
             page: 'New property',
             showHeader: true,
             categories,
             prices,
-            data:req.body,
-            errors: resultValidate.array(), 
+            data: req.body,
+            errors: resultValidate.array(),
             propertyData: {
                 title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng
             },
-    
+
         });
-    
+
     }
 }
 
