@@ -19,18 +19,19 @@ const protectRoute = async (req,res,next) =>{
     //VERIFICAR QUE EL TOKEN ESTE CORRECTO
     try {
         const decoded =  JsonWebToken.verify(_token,process.env.JWT_SECRET_HASH_STRING)
-        const loggerUser =await User.scope('deletePassword').findByPk(decoded.userID)
+        const loggedUser =await User.scope('deletePassword').findByPk(decoded.userID)
+        if(loggedUser){
+            req.loggedUser= loggedUser;
+        }else{
+            return res.redirect('/login')
+        }
         console.log(loggerUser)
     } catch (error) {
         console.log(err);
     }
 
     //TODO ALMACENAR EL USUARIO EN EL REQUEST
-    if(loggedUser){
-        req.loggedUser= loggedUser;
-    }else{
-        return res.redirect('/login')
-    }
+  
 
     next();
 }
