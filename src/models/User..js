@@ -33,7 +33,17 @@ const User = db.define('tbb_users', {
     hooks:{beforeCreate:async(user)=>{
         const salt= await bycrypt.genSalt(10);
         user.password= await bycrypt.hash(user.password, salt)
-    }}
+    }
+},
+scope:{
+    deletePassword:{
+        attributes:{
+            exclude:
+                ["password","token","verified","createAt","updateAt"]
+            
+        }
+    }
+}
 })
 
 
