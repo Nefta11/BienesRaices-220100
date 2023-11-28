@@ -24,6 +24,14 @@ const protectRoute = async (req,res,next) =>{
     } catch (error) {
         console.log(err);
     }
+
+    //TODO ALMACENAR EL USUARIO EN EL REQUEST
+    if(loggedUser){
+        req.loggedUser= loggedUser;
+    }else{
+        return res.redirect('/login')
+    }
+
     next();
 }
 

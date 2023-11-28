@@ -35,7 +35,7 @@ const User = db.define('tbb_users', {
         user.password= await bycrypt.hash(user.password, salt)
     }
 },
-scope:{
+scopes:{
     deletePassword:{
         attributes:{
             exclude:
