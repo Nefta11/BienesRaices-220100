@@ -634,6 +634,9 @@ video {
 .cursor-pointer {
   cursor: pointer;
 }
+.flex-col {
+  flex-direction: column;
+}
 .items-center {
   align-items: center;
 }
@@ -684,6 +687,9 @@ video {
 }
 .border-t-0 {
   border-top-width: 0px;
+}
+.border-dashed {
+  border-style: dashed;
 }
 .border-gray-300 {
   --tw-border-opacity: 1;
