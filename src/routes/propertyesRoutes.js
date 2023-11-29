@@ -4,6 +4,8 @@ import {formProperty, saveNewProperty,addImages} from '../controllers/propertyCo
 const router = express.Router();
 
 
+
+
 router.get('/create',protectRoute,formProperty)
 router.get('/addImage',protectRoute,addImages)
 router.post('/create',protectRoute,saveNewProperty)
