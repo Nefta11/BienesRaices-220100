@@ -25,7 +25,7 @@ const protectRoute = async (req,res,next) =>{
         }else{
             return res.redirect('/login')
         }
-        console.log(loggerUser)
+        console.log(loggedUser)
     } catch (error) {
         console.log(err);
     }
