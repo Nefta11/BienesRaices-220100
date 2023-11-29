@@ -51,12 +51,14 @@ const saveNewProperty = async (req, res) => {
 
     const { title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng } = req.body;
 
-    if (resultValidate.isEmpty()) {
+    if(resultValidate.isEmpty()){
         //Creamos
         const savedProperty = await Property.create({
-            title, description, category, priceRange, rooms: nRooms, wc: nwc, parkinglot: parkingLot, street, lat, lng, price_ID: priceRange, category_ID: category
+            title, description, category, priceRange, rooms:nRooms,wc:nwc, parkinglot:parkingLot, street, lat, lng, price_ID:priceRange, category_ID:category, user_ID: req.user.id
         })
-        res.send("Todo bien")
+
+        const uuidProperty = savedProperty.id
+        res.redirect(`/properties/addImage/${uuidProperty}`)
     }
     else {
         const [categories, prices] = await Promise.all([Category.findAll(), Price.findAll()])
