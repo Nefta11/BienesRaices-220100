@@ -7,6 +7,6 @@ Dropzone.options.images = {
     maxFilesize:5,
     maxFiles:1,
     paralelUploads:1,
-    autoProccesQueue
+    autoProccesQueue:false
 }
 
