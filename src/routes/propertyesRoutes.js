@@ -11,3 +11,4 @@ router.get('/addImage',protectRoute,addImages)
 router.post('/create',protectRoute,saveNewProperty)
 
 export default router
+

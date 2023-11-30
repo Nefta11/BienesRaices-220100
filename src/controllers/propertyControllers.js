@@ -89,17 +89,23 @@ const loadImage = async (req,res) => {
     //TODO Verificar que la propiedad exista
     const {idProperty} = req. params 
     const property = await Property.findByPrimaryKey(idProperty);
+    console.log(property)
     if(!property){
         return res.redirect('/home')
     }else{
-        
+           //TODO Verificar que la propiedad no este publicada
+        if(!property.published)
+
     }
 
-    //TODO Verificar que la propiedad no este publicada
+    }
+
+
+ 
 
     //TODO Validar que la propiedad pertenezca a quien visiata la pagina
 
 
-}
+
 
 export { formProperty, saveNewProperty,addImages }
