@@ -2,6 +2,7 @@ import Price from "../models/price.js";
 import Category from "../models/category.js";
 import Property from "../models/property.js";
 import { check, validationResult } from "express-validator";
+import upload from "../middlewares/uploadImage.js";
 
 const formProperty = async (req, res) => {
     //TODO: Obtener las categorias, y precios actuales para pintarlos en el formulario
