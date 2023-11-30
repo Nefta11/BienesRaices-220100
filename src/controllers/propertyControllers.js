@@ -100,7 +100,7 @@ const loadImage = async (req,res) => {
 
     }
 
-
+//checar aqui modificaron 
  
 
     //TODO Validar que la propiedad pertenezca a quien visiata la pagina
