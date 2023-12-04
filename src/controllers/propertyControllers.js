@@ -79,34 +79,54 @@ const saveNewProperty = async (req, res) => {
     }
 }
 
-const addImages=(req,res) => {
-    console.log('Visualizar el formulario para agregar imagenes')
-    res.render('properties/images',{
-        page:"Add image"
-    })
-}
+const addImage = async (req, res) => {
+    console.log(`Visualizar el formulario para agregar imagenes`)
 
-const loadImage = async (req,res) => {
-    //TODO Verificar que la propiedad exista
-    const {idProperty} = req. params 
-    const property = await Property.findByPrimaryKey(idProperty);
-    console.log(property)
+    const {idProperty} = req.params
+    console.log(idProperty)
+    //const userID = req.user.id
+    const property = await Property.findByPk(idProperty);
     if(!property){
         return res.redirect('/home')
-    }else{
-           //TODO Verificar que la propiedad no este publicada
-        if(!property.published)
+    }
+    
+    res.render('properties/images',{
+        page:`Add image to ${property.title}`,
+        property
+    })
 
+
+}
+
+const loadImage = async (req, res, next) => {
+    //VERIFICAR QUE LA PROPIEDAD EXISTA
+    const {idProperty} = req.params
+    const property = await Property.findByPk(idProperty);
+    if(!property){
+        return res.redirect('/home')
+    }
+    else{
+        //TODO: VERIFICAR QUE LA PROPIEDAD NO ESTE PUBLICADA
+        if(!property.published){
+            console.log("Dado que la propiedad no esta publicada se le pueden agregar fotos")
+            const userID = req.user.id
+            //VALIDAR QUE LA PROPIEDAD PERTENEZCA A QUIEN VISITA LA PAGINA
+
+            if(property.userID == userID){
+                console.log(`El usuario dueño de la propiedad es el mismo del que se encuentra loggueado`);
+                next()
+                
+            }else{
+                return res.redirect('/home')
+            }
+        }else{
+            return res.redirect('/home')
+        }
     }
 
-    }
+    
 
-//checar aqui modificaron 
- 
+    
+}
 
-    //TODO Validar que la propiedad pertenezca a quien visiata la pagina
-
-
-
-
-export { formProperty, saveNewProperty,addImages }
+export { formProperty, saveNewProperty, addImage, loadImage}
