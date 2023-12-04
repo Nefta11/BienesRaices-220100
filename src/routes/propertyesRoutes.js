@@ -7,7 +7,7 @@ const router = express.Router();
  //*EL SEGUNDO PARAMETRO ES EL MIDDLEWARE DE SEGURIDAD
 router.get('/create',protectRoute, formProperty)
 router.post('/create',protectRoute, saveNewProperty)
- 
+
 router.get('/addImage/:idProperty', protectRoute,addImage);
 router.post('/addImage/:idProperty', protectRoute, loadImage)
 
