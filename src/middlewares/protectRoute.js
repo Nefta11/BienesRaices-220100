@@ -1,39 +1,30 @@
-import router from "../routes/propertyesRoutes.js";
-import JsonWebToken from "jsonwebtoken";
+import jsonWebToken from "jsonwebtoken";
 import dotenv from 'dotenv';
-import User from '../models/User..js'
-import { where } from "sequelize";
-
+import User from "../models/User..js";
 dotenv.config({
-    path:'src/.env'
+    path: 'src/.env'
 });
-
-const protectRoute = async (req,res,next) =>{
-    console.log("Hola desde el middleware");
-
-    const {_token} = req.cookies
-    //TODO VERIFICAR QUE EL TOKEN EXISTA
-    if(!_token){
+const protectRoute = async (req, res, next) => {
+    const { _token } = req.cookies
+    //VERIFICAR QUE EL TOKE EXISTE
+    if (!_token) {
         return res.redirect('/login');
     }
-    //VERIFICAR QUE EL TOKEN ESTE CORRECTO
+    //VERIFICAR QUE EL TOKEN
     try {
-        const decoded =  JsonWebToken.verify(_token,process.env.JWT_SECRET_HASH_STRING)
-        const loggedUser =await User.scope('deletePassword').findByPk(decoded.userID)
-        if(loggedUser){
-            req.loggedUser= loggedUser;
-        }else{
+        const decoded = jsonWebToken.verify(_token, process.env.JWT_SECRET_HASH_STRING)
+        const loggedUser = await User.findByPk(decoded.userID)
+        // console.log(loggedUser)
+         //ALMACENAR EL USUARIO EN EL REQUEST
+        if (loggedUser) {
+            req.user = loggedUser;
+        } else {
             return res.redirect('/login')
         }
-        console.log(loggedUser)
-    } catch (error) {
+    } catch (err) {
         console.log(err);
-    }
-
-    //TODO ALMACENAR EL USUARIO EN EL REQUEST
-  
-
+    }    
     next();
 }
 
-export {protectRoute}
+export { protectRoute }

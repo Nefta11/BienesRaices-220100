@@ -51,11 +51,13 @@ const saveNewProperty = async (req, res) => {
     console.log(data);
 
     const { title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng } = req.body;
+    // const prueba = user.userID
+    console.log(`El usuario logeado es el: ${req.user.id}`)
 
-    if(resultValidate.isEmpty()){
+    if (resultValidate.isEmpty()) {
         //Creamos
         const savedProperty = await Property.create({
-            title, description, category, priceRange, rooms:nRooms,wc:nwc, parkinglot:parkingLot, street, lat, lng, price_ID:priceRange, category_ID:category, user_ID: req.user.id
+            title, description, category, priceRange, rooms: nRooms, wc: nwc, parkinglot: parkingLot, street, lat, lng, price_ID: priceRange, category_ID: category, user_ID: req.user.id
         })
 
         const uuidProperty = savedProperty.id
@@ -78,6 +80,7 @@ const saveNewProperty = async (req, res) => {
 
     }
 }
+
 
 const addImage = async (req, res) => {
     console.log(`Visualizar el formulario para agregar imagenes`)

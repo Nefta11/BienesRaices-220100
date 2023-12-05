@@ -1,6 +1,6 @@
 import express from "express";
 import { protectRoute } from "../middlewares/protectRoute.js";
-import { formProperty, saveNewProperty, addImage, loadImage } from "../controllers/propertyController.js";
+import { formProperty, saveNewProperty, addImage, loadImage } from "../controllers/propertyControllers.js";
 import uploadImage from "../middlewares/uploadImage.js";
 const router = express.Router();
 
