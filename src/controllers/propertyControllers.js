@@ -24,7 +24,7 @@ const saveNewProperty = async (req, res) => {
 
     await check("title").notEmpty().withMessage("The title is required").isLength({ min: 15, max: 150 }).withMessage("The title property must have between 15 and 150 characters").run(req)
 
-    await check("description").notEmpty().withMessage("The description is required").run(req)
+    await check("Description").notEmpty().withMessage("The description is required").run(req)
     console.log(`La categoria es esta que muestro:  ${typeof req.body.category}`)
 
     await check("category").notEmpty().withMessage("All properties must be categorized").isInt({ min: 1, max: 5 }).withMessage("The category is unknown").run(req)
@@ -50,14 +50,14 @@ const saveNewProperty = async (req, res) => {
     let data = req.body
     console.log(data);
 
-    const { title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng } = req.body;
+    const { title, Description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng } = req.body;
     // const prueba = user.userID
     console.log(`El usuario logeado es el: ${req.user.id}`)
 
     if (resultValidate.isEmpty()) {
         //Creamos
         const savedProperty = await Property.create({
-            title, description, category, priceRange, rooms: nRooms, wc: nwc, parkinglot: parkingLot, street, lat, lng, price_ID: priceRange, category_ID: category, user_ID: req.user.id
+            title, Description, category, priceRange, rooms: nRooms, wc: nwc, parkinglot: parkingLot, street, lat, lng, price_ID: priceRange, category_ID: category, user_ID: req.user.id
         })
 
         const uuidProperty = savedProperty.id
@@ -73,7 +73,7 @@ const saveNewProperty = async (req, res) => {
             data: req.body,
             errors: resultValidate.array(),
             propertyData: {
-                title, description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng
+                title, Description, category, priceRange, nRooms, nwc, parkingLot, street, lat, lng
             },
 
         });
