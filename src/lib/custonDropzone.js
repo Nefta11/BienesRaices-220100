@@ -23,7 +23,7 @@ Dropzone.options.image = {
         });
         Dropzone.on('queuecomplete', function(){
             if(Dropzone.getActiveFiles().length == 0){
-                window.location.href = '/home'
+                window.location.href = '/login/home'
             }
         })
     }

@@ -85,17 +85,24 @@ const saveNewProperty = async (req, res) => {
 const addImage = async (req, res) => {
     console.log(`Visualizar el formulario para agregar imagenes`)
 
-    const {idProperty} = req.params
+    const { idProperty } = req.params
     console.log(idProperty)
     //const userID = req.user.id
     const property = await Property.findByPk(idProperty);
-    if(!property){
-        return res.redirect('/home')
+    if (!property) {
+        return res.redirect('/login/home')
     }
-    
-    res.render('properties/images',{
-        page:`Add image to ${property.title}`,
-        property
+    if (property.published) {
+        return res.redirect('/login/home')
+    }
+    if (req.user.id.toString() !== property.user_ID.toString()) {
+        return res.redirect('/login/home')
+    }
+
+    res.render('properties/images', {
+        property,
+        page: `Add image to ${property.title}`,
+        idProperty
     })
 
 
@@ -109,13 +116,13 @@ const loadImage = async (req, res, next) => {
     //const userID = req.user.id
     const property = await Property.findByPk(idProperty);
     if (!property) {
-        return res.redirect('/home')
+        return res.redirect('/login/home')
     }
     if (property.published) {
-        return res.redirect('/home')
+        return res.redirect('/login/home')
     }
     if (req.user.id.toString() !== property.user_ID.toString()) {
-        return res.redirect('/home')
+        return res.redirect('/login/home')
     }
 
     try {
