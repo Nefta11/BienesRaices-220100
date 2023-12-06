@@ -102,34 +102,34 @@ const addImage = async (req, res) => {
 }
 
 const loadImage = async (req, res, next) => {
-    //VERIFICAR QUE LA PROPIEDAD EXISTA
-    const {idProperty} = req.params
+    console.log(`Visualizar el formulario para agregar imagenes`)
+
+    const { idProperty } = req.params
+    console.log(idProperty)
+    //const userID = req.user.id
     const property = await Property.findByPk(idProperty);
-    if(!property){
+    if (!property) {
         return res.redirect('/home')
     }
-    else{
-        //TODO: VERIFICAR QUE LA PROPIEDAD NO ESTE PUBLICADA
-        if(!property.published){
-            console.log("Dado que la propiedad no esta publicada se le pueden agregar fotos")
-            const userID = req.user.id
-            //VALIDAR QUE LA PROPIEDAD PERTENEZCA A QUIEN VISITA LA PAGINA
-
-            if(property.userID == userID){
-                console.log(`El usuario dueño de la propiedad es el mismo del que se encuentra loggueado`);
-                next()
-                
-            }else{
-                return res.redirect('/home')
-            }
-        }else{
-            return res.redirect('/home')
-        }
+    if (property.published) {
+        return res.redirect('/home')
+    }
+    if (req.user.id.toString() !== property.user_ID.toString()) {
+        return res.redirect('/home')
     }
 
-    
+    try {
+//ALMACENAR LA BASE Y PUBLICAR 
+        console.log(req.file);
+        property.image = req.file.filename;
+        property.published = 1;
 
-    
+        await property.save();
+
+        next();
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 export { formProperty, saveNewProperty, addImage, loadImage}
