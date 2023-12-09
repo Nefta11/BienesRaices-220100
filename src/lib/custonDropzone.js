@@ -12,6 +12,8 @@ Dropzone.options.image = {
     //dictMaxFilesExceeded: "Solamente uno"
     headers:{
 
+        
+
     },
     paramName:'image',
     //funcion cuando inicia dropzone
