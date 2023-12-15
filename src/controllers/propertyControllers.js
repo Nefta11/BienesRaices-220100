@@ -44,7 +44,6 @@ const saveNewProperty = async (req, res) => {
     await check("lng").isFloat({ min: -180, max: 180 }).withMessage("The length is not within the requested range.").run(req)
 
     //  res.json(validationResult(req))
-    
 
     let resultValidate = validationResult(req);
     console.log(`lat: ${req.body.lat}, long: ${req.body.lng}`)
