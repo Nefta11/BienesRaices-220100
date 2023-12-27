@@ -19,7 +19,6 @@ const formProperty = async (req, res) => {
 
 
 }
-
 const saveNewProperty = async (req, res) => {
 
     await check("title").notEmpty().withMessage("The title is required").isLength({ min: 15, max: 150 }).withMessage("The title property must have between 15 and 150 characters").run(req)
@@ -42,9 +41,7 @@ const saveNewProperty = async (req, res) => {
     await check("lat").isFloat({ min: -90, max: 90 }).withMessage("the latitude is not in the requested range").run(req)
 
     await check("lng").isFloat({ min: -180, max: 180 }).withMessage("The length is not within the requested range.").run(req)
-
     //  res.json(validationResult(req))
-
     let resultValidate = validationResult(req);
     console.log(`lat: ${req.body.lat}, long: ${req.body.lng}`)
     let data = req.body
@@ -138,5 +135,4 @@ const loadImage = async (req, res, next) => {
         console.log(err)
     }
 }
-
 export { formProperty, saveNewProperty, addImage, loadImage}
