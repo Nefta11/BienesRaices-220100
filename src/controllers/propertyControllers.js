@@ -127,7 +127,6 @@ const loadImage = async (req, res, next) => {
         console.log(req.file);
         property.image = req.file.filename;
         property.published = 1;
-        
         await property.save();
 
         next();
