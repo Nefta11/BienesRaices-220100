@@ -29,5 +29,4 @@ router.patch('/',(request,response)=> response.send("HI, YOU'RE TRYING TO UPDATE
 router.delete('/',(request,response)=> response.send("ARE YOU SURE THAT YOU EANT TO DELETE DATA?"))
 
 
-
 export default router;
